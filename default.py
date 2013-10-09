@@ -21,7 +21,7 @@ max_idle_time = (max_idle_time * 60) - notification_duration
 
 # do an initial sleep to let things settle first
 xbmc.sleep(5000)
-print("IdleUnsubscribe: Starting thread")
+print("IdleUnsubscribe: Starting polling thread")
 
 while True:
 	# if we are playing TV content
@@ -37,7 +37,8 @@ while True:
 
 			# if the idle time has been reset during our polling_time
 			if (current_time_idle < polling_time):
-				print("IdleUnsubscribe: Global idle time has been reset, resetting my waiting counter" % (current_time_idle, polling_time))
+				print("IdleUnsubscribe: Global idle time has been reset, resetting my waiting counter")
+				notification_time = 0
 				time_waiting = 0
 
 			# if we have been waiting longer then ...
@@ -47,12 +48,10 @@ while True:
 					xbmc.executebuiltin('PlayerControl(stop)', True)
 					break
 				else:
-					# check if we are already presenting the notification
-					if notification_time == 0:
-						title = "Idle Timer"
-						desc = "Press any key to avoid automatic sleep"
-						icon = "special://home/addons/script.service.idleunsubscribe/icon.png"
-						xbmc.executebuiltin((u"Notification(%s,%s,%i,%s)" % (title, desc, (notification_duration * 1000), icon)).encode("utf-8"))
+					title = "Idle Timer: Playback stops in %i sec" % (notification_duration - notification_time)
+					desc = "Press any key to cancel this action"
+					icon = "special://home/addons/script.service.idleunsubscribe/icon.png"
+					xbmc.executebuiltin((u"Notification(%s,%s,%i,%s)" % (title, desc, (polling_time * 1000), icon)).encode("utf-8"))
 
 					# set the notification time
 					notification_time += polling_time
