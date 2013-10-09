@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <settings>
     <category label="Idle Control">
-        <setting label="Idle time in minutes" type="number"   id="idletime" default="60"/>
+        <setting label="Maximum idle time in minutes before playback is stopped" type="number" id="max_idle_time" default="150" />
+        <setting label="Polling time in seconds during playback" type="number" id="polling_time" default="5" />
     </category>
 </settings>

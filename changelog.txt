@@ -1,6 +1,17 @@
+10/10/2013
+* Made polling interval a variable
+* Added an icon during XBMC notification
+* Updated readme file
+
 13/09/2013
 * Additional updates and additions for xbmc add-on
 * Added settings dialogue and variable checking
 --------------
 September 2013
 Initial release
+
+
+--------------
+icon.png
+Author:  http://judge.deviantart.com/
+Licence: Freeware Non-commercial

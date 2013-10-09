@@ -1,24 +1,22 @@
 xbmc-idleubsubscribe
 ====================
 
-XBMC script add-on that will auto unsubscribe from current tv channel if no activity detected
+XBMC script add-on that will auto unsubscribe from current tv channel if no activity detected for a set amount of time.
 
-Currently the time for sleep is hardcoded into the default.py
-in the variable: IDLE_TIME_MIN = 60
+The script will present a notification before the expiry of the max_idle_time and if no action is taken (button press, remote press, mouse movement) it will stop the current activity on XBMC.
 
-The system will prompt before the expiry of the timer and if no action taken
-it will unsubscribe/stop the current activity on xbmc
+Currently some values can be adjusted through the resources/settings.xml file:
+* max_idle_time (time after which playback is automatically stopped)
+* polling_time (how frequently we check if XBMC is still idle)
+
+REQUIREMENTS:
+=============
+
+* XBMC Frodo or later
 
 INSTALLATION:
 =============
 
-Create a folder for the addon in your .xbmc folder.
-e.g. mkdir /storage/.xbmc/addons/script.service.idleunsubscribe
+To install please follow the following guide.
 
-Copy the default.py and addon.xml into this folder
-
-Edit default.py and set the idle time you want. it's set to 1hr by default
-
-Reload XBMC, go into addons and enable the idleunsubscribe addon. This will then
-trigger and start the countdown timer when a playback is taking place.
-
+http://forum.xbmc.org/showthread.php?tid=123465
